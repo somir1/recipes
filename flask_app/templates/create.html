@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+</head>
+<body>
+    <h1>Add a new recipe</h1>
+
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/new/recipe", method = "post">
+        Name: <br>
+        <input type="text" name="name" id="name"><br>
+        Date create on: <br>
+        <input type="date" name="date"> <br>
+        Description: <br>
+        <textarea name="description"cols="30" rows="10"></textarea><br>
+        Instructions: <br>
+        <textarea name="instructions"cols="30" rows="10"></textarea><br>
+        Under 30 minutes?
+        <input type="radio" name="unders30" id="yes" value="Yes">
+        <label for="yes">Yes</label>
+        <input type="radio" name="unders30" id="no" value="No">
+        <label for="no">No</label><br>
+        <input type="Submit" value="Upload my amazing recipe">
+    </form>
+    <a href="/logout">Logout</a>
+    <a href="/dashboard">DashBoard</a>
+</body>
+</html>

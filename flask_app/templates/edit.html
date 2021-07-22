@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit recipe</title>
+</head>
+<body>
+    <form action="/update/recipe/{{recipe.id}}", method = "post">
+        Name: <br>
+        <input type="text" name="name" id="name" value="{{recipe['name']}}"><br>
+        Date create on: <br>
+        <input type="date" name="date" value="{{recipe.date.strftime('%Y-%m-%d')}}"><br>
+        Description: <br>
+        <textarea name="description"cols="30" rows="10" >{{recipe['description']}}</textarea><br>
+        Instructions: <br>
+        <textarea name="instructions"cols="30" rows="10">{{recipe['instructions']}}</textarea><br>
+        Under 30 minutes?
+        {% if recipe.unders30 == 'Yes' %}
+        <input type="radio" name="unders30" id="yes" value="Yes" checked>
+        <label for="yes">Yes</label>
+        <input type="radio" name="unders30" id="no" value="No">
+        <label for="no">No</label><br>
+        {% endif %}
+        {% if recipe.unders30 == 'No' %}
+        <input type="radio" name="unders30" id="yes" value="Yes">
+        <label for="yes">Yes</label>
+        <input type="radio" name="unders30" id="no" value="No" checked>
+        <label for="no">No</label><br>
+        {% endif %}
+
+        <input type="Submit" value="Update">
+    </form>
+
+<a href="/logout">Logout</a>
+<a href="/dashboard">Dashboard</a>
+</body>
+</html>

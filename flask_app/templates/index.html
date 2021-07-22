@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tourney:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Login and Registration</title>
+</head>
+<body>
+    
+    <div class="main">
+        <h1>Log in or Register</h1>
+        <div class="con">
+            <div class="register">
+                <form action="/createuser", method = 'POST'>
+                    <h2 class="welcome">Welcome please register here!</h2>
+                    <h3>First Name:</h3>
+                    <input type="text" name="first_name" id="inputbox">
+                    <h3>Last Name:</h3>
+                    <input type="text" name="last_name" id="inputbox">
+                    <h3>Email:</h3>
+                    <input type="email" name="email" id="inputbox">
+                    <h3>Password:</h3>
+                    <input type="password" name="password" id="inputbox">
+                    <h3>Confirm Password:</h3>
+                    <input type="password" name="confirmpassword" id="inputbox"><br>
+                    <input class = "btn" type="submit" value="Create Account">
+                </form>
+            </div>
+            <div class="warning">
+                {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+            <div class="login">
+                <form action="/loggedin", method = 'POST'>
+                    <h3>Email:</h3>
+                    <input type="email" name="email" id="inputbox">
+                    <h3>Password:</h3>
+                    <input type="password" name="password" id="inputbox"><br>
+                    <input class = "btn" type="submit" value="Sign in">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
